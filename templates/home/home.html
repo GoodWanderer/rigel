@@ -1,0 +1,140 @@
+{% extends "basic.html" %}
+{% load static %}
+
+{% block head %}
+<!--    <link rel="stylesheet" href="{% static 'base/home/home.css' %}">-->
+    <title>Грузоперевозки, таможня, страхование - Rigel-Z Group</title>
+{% endblock %}
+
+{% block content %}
+<div class="sections">
+  <div class="container start">
+    <div class="row">
+      <div class="col-md-9 main-content">
+        <div></div>
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="slideshow hidden-xs">
+              <div id="slider1" class="rev_slider" data-version="5.0">
+                <ul>
+                  {% for slide in pageHome.homeSlider.all %}
+                    <li class="{% if forloop.first %}
+                        'data-transition="random-premium" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" style="background-color: rgba(34, 34, 34, 0.3);"'
+                    {% else %}
+                        'data-index="rs-367" data-transition="random-premium" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default"'
+                    {% endif %}">
+                      <img src="{{ slide.img.url }}" alt="" width="1920" height="1080">
+                    </li>
+                  {% endfor %}
+<!--                  <li data-transition="random-premium" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" style="background-color: rgba(34, 34, 34, 0.3);">-->
+<!--                    <img src="https://rigel-z.lv/images/slides/4246c-slider-1.jpg" alt="" width="1920" height="1080">-->
+<!--                  </li>-->
+
+<!--                  <li data-index='rs-367' data-transition='random-premium' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default'>-->
+<!--                    <img src="https://rigel-z.lv/images/slides/4246c-slider-1.jpg" alt="" width="1920" height="1080">-->
+<!--                  </li>-->
+
+<!--                  <li data-index='rs-367' data-transition='random-premium' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default'>-->
+<!--                    <img src="https://rigel-z.lv/images/slides/4246c-slider-1.jpg" alt="" width="1920" height="1080">-->
+<!--                  </li>-->
+
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="clearfix  gap"></div>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="accordion">
+
+            {% for accordion in pageHome.homeAccordion.all %}
+              <div class="section-content">
+                <h4 class="accordion-title"><a href="#">{{ accordion.name }}<i class="fa fa-plus"></i></a></h4>
+                <div class="accordion-inner">
+                  <p><span style="color:#171717">{{ accordion.description }}</span></p>
+                </div>
+              </div>
+            {% endfor %}
+
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sections-title">
+              <div class="sections-title-h3">
+                <h3>Миссия</h3>
+              </div>
+              <div>
+                {{ pageHome.mission|safe }}
+              </div>
+            </div><!-- End sections-title -->
+            <div class="gap"></div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="box-icon box-icon-number">
+                  <div class="box-icon-i box-icon-i-2 box-icon-i-4"><i class="fa fa-road"></i></div>
+                  <div class="box-icon-content">
+                    <h5>67613054</h5>
+                    <p>Километраж</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box-icon box-icon-number">
+                  <div class="box-icon-i box-icon-i-2 box-icon-i-4"><i class="fa fa-file-alt"></i></div>
+                  <div class="box-icon-content">
+                    <h5>42052</h5>
+                    <p>Заказы</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box-icon box-icon-number">
+                  <div class="box-icon-i box-icon-i-2 box-icon-i-4"><i class="fa fa-globe"></i></div>
+                  <div class="box-icon-content">
+                    <h5>1913</h5>
+                    <p>Города</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box-icon box-icon-number">
+                  <div class="box-icon-i box-icon-i-2 box-icon-i-4"><i class="fas fa-briefcase"></i></div>
+                  <div class="box-icon-content">
+                    <h5>96</h5>
+                    <p>Клиенты</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 sidebar social-facebook">
+
+        <div class="widget social-facebook" style="height: 1200 px">
+
+          <div class="fb-page" data-href="https://www.facebook.com/SIARigelZ/" data-tabs="timeline" data-width="700"
+            data-height="1200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"
+            data-show-facepile="false">
+            <blockquote cite="https://www.facebook.com/SIARigelZ/" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/SIARigelZ/">Rigel-Z</a>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

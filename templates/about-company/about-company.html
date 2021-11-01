@@ -1,0 +1,99 @@
+{% extends "basic.html" %}
+{% load static %}
+
+{% block head %}
+    <title>О компании | Rigel-Z Group</title>
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>О компании</h4>
+          </div>
+          <div class="col-md-6">
+            <div class="crumbs">
+              Вы находитесь здесь:
+              <a href="{% url 'home' %}">Начало</a>
+              <span class="crumbs-span">»</span>
+              <span>О компании</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sections">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 main-content">
+            <div></div>
+            <div class="row">
+              <div class="col-md-12">
+                <p>
+                    <span style="color: rgb(0, 0, 0); font-family: calibri; font-size: 17px;">
+                        {{ pageAboutСompany.text }}
+                    </span>
+                </p>
+              </div>
+            </div>
+            <div class="clearfix  gap"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="accordion">
+
+                {% for company in pageAboutСompany.aboutСompany.all %}
+                  <div class="section-content" id="{{ company.name }}">
+                    <h4 class="accordion-title"><a href="#">{{ company.name }}<i class="fa fa-minus"></i></a></h4>
+                    <div class="accordion-inner" style="display: none;">
+                        {{ company.description }}
+                    </div>
+                  </div>
+                {% endfor %}
+
+<!--                  <div class="section-content" id="rigel_z">-->
+<!--                    <h4 class="accordion-title"><a href="#">Rigel-Z<i class="fa fa-minus"></i></a></h4>-->
+<!--                    <div class="accordion-inner" style="display: none;">-->
+<!--                      Rigel-Z обеспечит логистику Ваших поставок и предложит оптимальные решения в области грузоперевозок из-->
+<!--                      Европы и Азии, Северной и Южной Америки с использованием всех видов транспорта.<br>-->
+<!--                      Наша компания гарантирует надежность доставки и берет на себя обязательства за всю цепочку перевозки,-->
+<!--                      контролирует маршрут движения груза, сроки доставки, а также оформляет все необходимые-->
+<!--                      товаросопроводительные документы. Мы предоставляем своим клиентам полную и своевременную информацию о-->
+<!--                      грузе на всём пути его следования. </div>-->
+<!--                  </div>-->
+<!--                    -->
+<!--                  <div class="section-content" id="rosterminals">-->
+<!--                    <h4 class="accordion-title"><a href="#">ROSTERMINĀLS<i class="fa fa-minus"></i></a></h4>-->
+<!--                    <div class="accordion-inner" style="display: none;">-->
+<!--                      <p>Rosterminals – таможенный склад в Риге.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="section-content" id="straume">-->
+<!--                    <h4 class="accordion-title active"><a href="#">STRAUME<i class="fa fa-plus"></i></a></h4>-->
+<!--                    <div class="accordion-inner active" style="display: block;">-->
+<!--                      <p>SIA Straume – одна из старейших автотранспортных компаний Латвийской Республики. Основана в 1992-->
+<!--                        году. Имеет TIR Carnet.</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 sidebar social-facebook">
+            <div class="widget social-facebook" style="height: 1200 px">
+              <div class="fb-page" data-href="https://www.facebook.com/SIARigelZ/" data-tabs="timeline" data-width="700"
+                data-height="1200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"
+                data-show-facepile="false">
+                <blockquote cite="https://www.facebook.com/SIARigelZ/" class="fb-xfbml-parse-ignore">
+                  <a href="https://www.facebook.com/SIARigelZ/">Rigel-Z</a>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="go-up" style="right: 20px;"><i class="fa fa-chevron-up"></i></div>
+{% endblock %}

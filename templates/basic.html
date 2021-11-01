@@ -1,0 +1,464 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="csstransforms csstransforms3d csstransitions" style="overflow-y: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Rigel - Z">
+    <meta name="author" content="ozo.men">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script id="facebook-jssdk" src="//connect.facebook.net/ru_RU/sdk.js#xfbml=1&amp;version=v2.5&amp;appId=1447872898655243"></script>
+    <script type="text/javascript" async="" src="https://mc.yandex.ru/metrika/watch.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <link href="{% static 'style/assets/easyautocomplete/easy-autocomplete.min.css' %}" rel="stylesheet">
+    <link href="{% static 'style/assets/easyautocomplete/easy-autocomplete.themes.min.css' %}" rel="stylesheet">
+    <link href="{% static 'style/assets/easyautocomplete/flags.css' %}" rel="stylesheet">
+    <script src="{% static 'style/assets/easyautocomplete/jquery.easy-autocomplete.min.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'style/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/css/skins/bordo.css' %}">
+    <link rel="stylesheet" href="{% static 'style/css/responsive.css' %}">
+
+    <script>if((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) document.cookie='HTTP_IS_RETINA=1;path=/';</script>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'style/images/rigel-z.ico' %}">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style/assets/revolution/css/settings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/assets/revolution/css/layers.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/assets/revolution/css/navigation.css' %}">
+
+    <link href="{% static 'style/assets/dist/css/lightgallery.css' %}" rel="stylesheet">
+
+    <script src="{% static 'style/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'style/assets/bootstrap-datetimepicker/js/moment.js' %}"></script>
+    <script src="{% static 'style/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'style/assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter48494654 = new Ya.Metrika({
+                        id:48494654,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/48494654" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    {% block head %}{% endblock %}
+</head>
+<body class="vsc-initialized">
+    <div id="wrap" class="fixed-enabled grid_1200 boxed">
+        <header id="header-top" class="header-top-4">
+          <div class="container clearfix">
+            <div class="row">
+              <div class="col-md-12  visible-xs col-xs-12">
+                <div class="phone-email"><i class="fa fa-phone"></i><a href="tel:{{ contacts.phone1  }}">{{ contacts.phone1 }}</a> / <a href="tel:{{ contacts.phone2 }}">{{ contacts.phone2 }}</a></div>
+                <div class="phone-email"><i class="fa fa-envelope"></i><a href="mailto:{{ contacts }}">{{ contacts.mail }}</a></div>
+              </div>
+            </div>
+            <div class="row hidden-xs">
+              <div class="col-md-4 hidden-xs col-sm-6 ">
+                <div class="groupmembers">
+
+                  {% for company in companys.aboutСompany.all %}
+                    <a href="{% url 'aboutCompany' %}">
+                      <h2>{{ company.name }}</h2>
+                    </a>
+                  {% endfor %}
+<!--                  <a href="https://rigel-z.lv/ru/o-kompanii/rosterminals">-->
+<!--                    <h2>ROSTERMINĀLS</h2>-->
+<!--                  </a>-->
+<!--                  <a href="https://rigel-z.lv/ru/o-kompanii/straume">-->
+<!--                    <h2>STRAUME</h2>-->
+<!--                  </a>-->
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-12 hidden-sm">
+                <div class="logo">
+                  <a href="{% url 'home' %}"><img alt="Лого" src="{% static './img/header/rigel-z-logo.png' %}"></a><span></span>
+                </div>
+              </div>
+              <div class="col-md-4 hidden-xs col-sm-6 ">
+                <div class="contacts-top-right">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="phone-email" style="float: right;"><i class="fa fa-phone"></i><a href="tel:{{ contacts.phone1 }}">{{ contacts.phone1 }}</a> / <a href="tel:{{ contacts.phone2 }}">{{ contacts.phone2 }}</a></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="phone-email" style="float: right;"><i class="fa fa-envelope"></i><a href="{{ contacts.mail }}">{{ contacts.mail }}</a></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="social-ul">
+                        <ul>
+                          <li class="social-facebook"><a href="{{ contacts.fb }}" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                          <li class="social-twitter"><a href="{{ contacts.inst }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                          <li class="social-google"><a href="{{ contacts.google }}" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <header id="header" class="header header-3 header-4">
+          <div class="container clearfix container-nav">
+            <nav class="navigation">
+              <ul>
+                <li>
+                  <a href="{% url 'home' %}" title="Начало" class="homelink"><i class="fa fa-home" style="font-size: 20px;"></i></a>
+                </li>
+                <li class="parent-list">
+                  <a href="https://rigel-z.lv/ru/uslugi" title="" class="">Услуги<span class="menu-nav-arrow"><i class="fa fa-angle-down"></i></span></a>
+                  <ul></ul>
+                </li>
+                <li>
+                  <a href="http://rosterminals.lv" title="" class="">Услуги таможенного склада</a>
+                </li>
+                <li class="parent-list">
+                  <a href="https://rigel-z.lv/ru/avtotransport" title="" class="">Автотранспорт<span class="menu-nav-arrow"><i class="fa fa-angle-down"></i></span></a>
+                  <ul></ul>
+                </li>
+                <li>
+                  <a href="https://rigel-z.lv/ru/zapros-stavok" title="" class="">Запрос ставок</a>
+                </li>
+                <li>
+                  <a href="{% url 'documents' %}" title="" class="">Документы</a>
+                </li>
+                <li>
+                  <a href="{% url 'photoGallery' %}" title="" class="">Фотогалерея</a>
+                </li>
+                <li>
+                  <a href="{% url 'aboutCompany' %}" title="" class="">О компании</a>
+                </li>
+                <li>
+                  <a href="{% url 'contacts' %}" title="" class="">Контакты</a>
+                </li>
+
+                <li>
+                  <a href="https://rigel-z.lv/en/"><img src="{% static './img/header/uk.png' %}" alt="ru"></a>
+                  <a href="https://rigel-z.lv/ru/"><img src="{% static './img/header/ru.png' %}" alt="en"></a>
+                </li>
+
+              </ul>
+              <div class="phone-email fixedp" style=""><i class="fa fa-phone"></i>
+                <a href="tel:{{ contacts.phone1 }}">{{ contacts.phone1 }}</a> / <a href="{{ contacts.phone2 }}">{{ contacts.phone2 }}</a>
+              </div>
+
+            </nav>
+          </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+
+        <footer id="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="footer-widget animationz" data-animate="bounceInLeft">
+
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="widget-title">
+                        <h6>Карта сайта</h6>
+                      </div>
+                      <div class="widget-about-3">
+
+                        <a href="{% url 'home' %}" title="Начало" class="homelink">
+                          <h6><i class="fa fa-home" style="font-size: 20px;"></i></h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/uslugi" title="" class="">
+                          <h6>Услуги</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/uslugi-tamozhennogo-sklada" title="" class="">
+                          <h6>Услуги таможенного склада</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/avtotransport" title="" class="">
+                          <h6>Автотранспорт</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/zapros-stavok" title="" class="">
+                          <h6>Запрос ставок</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/dokumenti" title="" class="">
+                          <h6>Документы</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/fotogalereya" title="" class="">
+                          <h6>Фотогалерея</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/o-kompanii" title="" class="">
+                          <h6>О компании</h6>
+                        </a>
+
+
+                        <a href="https://rigel-z.lv/ru/kontakti" title="" class="">
+                          <h6>Контакты</h6>
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="footer-widget animationz" data-animate="bounceInUp">
+                  <div class="widget-title">
+                    <h6>Услуги</h6>
+                  </div>
+                  <div class="widget-about-2">
+                    <div class="col-xs-12 col-sm-12 col-md-12 list-ul list-ul-caret-right">
+                      <ul class="list-unstyled text-capitalize">
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/treyderskie-uslugi"> Трейдерские услуги</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/tamozhnya-esrfrbkz">Таможня ЕС/РФ/РБ/КЗ</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/konteynernie-perevozki">Контейнерные перевозки</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/perevozki-sbornikh-gruzov">Перевозки сборных грузов</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/perevozki-komplektnikh-gruzov">Перевозки комплектных грузов</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/aviaperevozki-gruzov">Авиаперевозки грузов</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/perevozki-negabaritnikh-gruzov">Перевозки негабаритных
+                            грузов</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/perevozki-dorogikh-i-osobikh-gruzov">Перевозки дорогих и особых
+                            грузов</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/strakhovanie-gruza">Страхование груза</a>
+                        </li>
+                        <li>
+                          <a href="https://rigel-z.lv/ru/uslugi/multimodalnie-perevozki">Мультимодальные перевозки</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="footer-widget animationz" data-animate="bounceInRight">
+                  <div class="widget-title">
+                    <h6>Автотранспорт</h6>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-12 col-md-12 list-ul list-ul-caret-right">
+                    <ul class="list-unstyled text-capitalize">
+                      <li>
+                        <a href="https://rigel-z.lv/ru/avtotransport/konteynernie-ploshchadki">Контейнерные площадки</a>
+                      </li>
+                      <li>
+                        <a href="https://rigel-z.lv/ru/avtotransport/stsepka-120-m3">Сцепка 120 м3</a>
+                      </li>
+                      <li>
+                        <a href="https://rigel-z.lv/ru/avtotransport/refrizherator">Рефрижератор</a>
+                      </li>
+                      <li>
+                        <a href="https://rigel-z.lv/ru/avtotransport/tent-92-m3">Тент 92 м3</a>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div><!-- End row -->
+          </div><!-- End container -->
+        </footer>
+
+        <footer id="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="copyrights">Copyright 2018 Rigel-Z | Developed By <a target="_blank" href="http://ozo.men/ru/" class="devbty">OZO.MEN</a></div>
+              </div>
+              <div class="col-md-6 ">
+                <div class="phone-email footercontacts" style="float: right;"><i class="fa fa-phone"></i><a href="tel:{{ contacts.phone1 }}">{{ contacts.phone1 }}</a> / <a href="tel:{{ contacts.phone2 }}">{{ contacts.phone2 }}</a></div>
+                <div class="phone-email footercontacts" style="float: right;"><i class="fa fa-envelope"></i><a href="{{ contacts.mail }}">{{ contacts.mail }}</a></div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+<!--<script src="js/jquery.min.js"></script>*/-->
+
+
+<script src="{% static 'style/js/html5.js' %}"></script>
+<script src="{% static 'style/js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'style/js/jquery.nicescroll.min.js' %}"></script>
+<script src="{% static 'style/js/jquery.appear.js' %}"></script>
+<script src="{% static 'style/js/count-to.js' %}"></script>
+
+<script src="{% static 'style/js/twitter/jquery.tweet.js' %}"></script>
+<script src="{% static 'style/js/jquery.inview.min.js' %}"></script>
+<script src="{% static 'style/js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'style/js/jquery.bxslider.min.js' %}"></script>
+
+<script src="{% static 'style/js/custom.js' %}"></script><div id="ascrail2000" class="nicescroll-rails" style="width: 6px; z-index: 9999999; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; opacity: 1;"><div style="position: relative; top: 30px; float: right; width: 6px; height: 89px; background-color: rgb(23, 23, 23); border: 0px; background-clip: padding-box; border-radius: 0px;"></div></div>
+
+
+<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+<script src="{% static 'style/assets/dist/js/lightgallery-all.min.js' %}"></script>
+<script src="{% static 'style/assets/lib/jquery.mousewheel.min.js' %}"></script>
+
+<!-- RS5.0 Core JS Files -->
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'style/assets/revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+   jQuery("#slider1").revolution({
+      sliderType:"standard",
+      sliderLayout:"auto",
+      delay:6000,
+      disableProgressBar:"on",
+      spinner:"off",
+      navigation: {
+        keyboardNavigation:"off",
+        keyboard_direction: "horizontal",
+        mouseScrollNavigation:"off",
+        onHoverStop:"off",
+        arrows: {
+            style:"arrow",
+            enable:true,
+            hide_onmobile:true,
+            hide_onleave:false,
+            tmp:'',
+            left: {
+                h_align:"left",
+                v_align:"bottom",
+                h_offset:110,
+                v_offset:35
+            },
+            right: {
+                h_align:"left",
+                v_align:"bottom",
+                h_offset:150,
+                v_offset:35
+            }
+        },
+        bullets:{
+         style:"slider-bullet",
+         enable:true,
+         hide_onmobile:false,
+         hide_onleave:false,
+         hide_delay:200,
+         hide_delay_mobile:1200,
+         hide_under:0,
+         hide_over:9999,
+         tmp:'<span></span>',
+         direction:"horizontal",
+         space:5,
+         h_align:"center",
+         v_align:"center",
+         h_offset:0,
+         v_offset:550
+        },
+    },
+      gridwidth:1230,
+      gridheight:550 ,
+
+    });
+});
+</script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
+            });
+
+            $(function () {
+                $('#datetimepicker2').datetimepicker({format: 'DD/MM/YYYY'});
+            });
+        </script>
+
+<script>
+$(document).ready(function() {
+    $('img[src$=".svg2"]').each(function() {
+        var $img = jQuery(this);
+        var imgURL = $img.attr('src');
+        var attributes = $img.prop("attributes");
+
+        $.get(imgURL, function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+
+            // Remove any invalid XML tags
+            $svg = $svg.removeAttr('xmlns:a');
+
+            // Loop through IMG attributes and apply on SVG
+            $.each(attributes, function() {
+                $svg.attr(this.name, this.value);
+            });
+
+            // Replace IMG with SVG
+            $img.replaceWith($svg);
+        }, 'xml');
+    });
+});
+</script>
+</body>
+</html>
+

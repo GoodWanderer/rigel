@@ -1,0 +1,296 @@
+{% extends "basic.html" %}
+{% load static %}
+
+{% block head %}
+    <title>О компании | Rigel-Z Group</title>
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Документы</h4>
+          </div>
+          <div class="col-md-6">
+            <div class="crumbs">
+              Вы находитесь здесь:
+              <a href="{% url 'home' %}">Начало</a>
+              <span class="crumbs-span">»</span>
+              <span>Документы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="sections">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-9 main-content">
+        <div class="row">
+          <div class="col-md-12 protfolio-filter">
+            <ul>
+              <li class="current"><a data-filter="*" href="#">Все компании</a></li>
+              <li><a data-filter=".term-rigel_z" href="#">Rigel-Z</a></li>
+              <li><a data-filter=".term-rosterminals" href="#">ROSTERMINĀLS</a></li>
+              <li><a data-filter=".term-straume" href="#">STRAUME</a></li>
+            </ul>
+          </div>
+        </div><!-- End row -->
+        <div class="row portfolio-all portfolio-0 documents">
+          <ul class="isotope" style="position: relative; overflow: hidden; height: 2040px;">
+
+            {% for document in documents %}
+            <li class="col-md-4 {% if document.company == 'Rigel-Z' %} term-rigel_z {% elif document.company == 'ROSTERMINĀLS' %} term-rosterminals {% elif document.company == 'STRAUME' %} term-straume {% endif %} portfolio-item isotope-item"
+              style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+              <div class="portfolio-one">
+                <div class="portfolio-head">
+                  <div class="portfolio-img">
+                    <img alt="" src="https://rigel-z.lv/pdf/6d8d1-15_1.jpg">
+                  </div>
+                  <div class="portfolio-hover">
+                    <a class="portfolio-link" target="_blank" href="{{ document.pdf.url }}"><i class="fa fa-link"></i></a>
+                    <a class="portfolio-zoom prettyPhoto"
+                      href="{% url 'documentDetail' document.pk %}"><i class="fa fa-search"></i></a>
+                  </div>
+                </div><!-- End portfolio-head -->
+                <div class="portfolio-content">
+                  <i class="fa fa-file-alt"></i>
+                  <div class="portfolio-meta">
+                    <div class="portfolio-name">
+                      <h6><a href="https://rigel-z.lv/ru/dokumenti/registratsionnoe-svidetelstvo">{{ document.name }}</a></h6>
+                    </div>
+                    <div class="portfolio-cat">SIA "{{ document.company }}" </div>
+                  </div><!-- End portfolio-meta -->
+                </div><!-- End portfolio-content -->
+              </div><!-- End portfolio-item -->
+            </li>
+            {% endfor %}
+
+<!--            <li class="col-md-4 term-rigel_z portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(293px, 0px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/7f82c-cmr-polise_stranitsa_01.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/9b578-cmr-polise.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto" href="https://rigel-z.lv/ru/dokumenti/cmr-strakhovka2"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/cmr-strakhovka2">CMR страховка</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "RIGEL-Z" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+<!--            <li class="col-md-4 term-rosterminals portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 510px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/ab022-t_17.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/d1bcd-17.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto"-->
+<!--                      href="https://rigel-z.lv/ru/dokumenti/registratsionnoe-svidetelstvo1"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/registratsionnoe-svidetelstvo1">Регистрационное-->
+<!--                          свидетельство</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "ROSTERMINĀLS" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+<!--            <li class="col-md-4 term-rosterminals portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(293px, 510px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/d8659-18_1.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/bb32c-18.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto"-->
+<!--                      href="https://rigel-z.lv/ru/dokumenti/razreshenie-na-rabotu-tamozhennogo-sklada"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/razreshenie-na-rabotu-tamozhennogo-sklada">Разрешение-->
+<!--                          на работу таможенного склада</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "ROSTERMINĀLS" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+<!--            <li class="col-md-4 term-rosterminals portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1020px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/84c65-t_26.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/79a5d-26.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto"-->
+<!--                      href="https://rigel-z.lv/ru/dokumenti/strakhoy-polis-tamozhennogo-sklada"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/strakhoy-polis-tamozhennogo-sklada">Страхой полис-->
+<!--                          таможенного склада</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "ROSTERMINĀLS" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+<!--            <li class="col-md-4 term-straume portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(293px, 1020px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/e9c21-t_19.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/4c3a9-19.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto"-->
+<!--                      href="https://rigel-z.lv/ru/dokumenti/registratsionnoe-svidetelstvo2"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/registratsionnoe-svidetelstvo2">Регистрационное-->
+<!--                          свидетельство</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "STRAUME" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+<!--            <li class="col-md-4 term-straume portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 1530px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/b1484-cmr-polise_stranitsa_01.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/b5f9c-cmr-polise.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto" href="https://rigel-z.lv/ru/dokumenti/cmr-strakhovka1"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/cmr-strakhovka1">CMR страховка</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "STRAUME" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+<!--            <li class="col-md-4 term-straume portfolio-item isotope-item"-->
+<!--              style="position: absolute; left: 0px; top: 0px; transform: translate3d(293px, 1530px, 0px);">-->
+<!--              <div class="portfolio-one">-->
+<!--                <div class="portfolio-head">-->
+<!--                  <div class="portfolio-img">-->
+<!--                    <img alt="" src="https://rigel-z.lv/pdf/89f3d-t_23.jpg">-->
+<!--                  </div>-->
+<!--                  <div class="portfolio-hover">-->
+<!--                    <a class="portfolio-link" target="_blank" href="https://rigel-z.lv/pdf/e8f24-23.pdf"><i-->
+<!--                        class="fa fa-link"></i></a>-->
+<!--                    <a class="portfolio-zoom prettyPhoto" href="https://rigel-z.lv/ru/dokumenti/litsenziya"><i-->
+<!--                        class="fa fa-search"></i></a>-->
+<!--                  </div>-->
+<!--                </div>&lt;!&ndash; End portfolio-head &ndash;&gt;-->
+<!--                <div class="portfolio-content">-->
+<!--                  <i class="fa fa-file-alt"></i>-->
+<!--                  <div class="portfolio-meta">-->
+<!--                    <div class="portfolio-name">-->
+<!--                      <h6><a href="https://rigel-z.lv/ru/dokumenti/litsenziya">Лицензия</a></h6>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-cat">-->
+<!--                      SIA "STRAUME" </div>-->
+<!--                  </div>&lt;!&ndash; End portfolio-meta &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; End portfolio-content &ndash;&gt;-->
+<!--              </div>&lt;!&ndash; End portfolio-item &ndash;&gt;-->
+<!--            </li>-->
+          </ul>
+        </div><!-- End portfolio-0 -->
+        <div class="pagination">
+          <ul>
+            <li class="pagination-prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li class="pagination-next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
+          </ul>
+        </div><!-- End pagination -->
+      </div><!-- End main-content -->
+      <div class="col-md-3 sidebar social-facebook">
+
+
+        <div class="widget social-facebook" style="height: 1400 px">
+
+          <div class="fb-page" data-href="https://www.facebook.com/SIARigelZ/" data-tabs="timeline" data-width="700"
+            data-height="1400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"
+            data-show-facepile="false">
+            <blockquote cite="https://www.facebook.com/SIARigelZ/" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/SIARigelZ/">Rigel-Z</a>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

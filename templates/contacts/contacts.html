@@ -1,0 +1,146 @@
+{% extends "basic.html" %}
+{% load static %}
+
+{% block head %}
+    <title>Контакты | Rigel-Z Group</title>
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Контакты</h4>
+          </div>
+          <div class="col-md-6">
+            <div class="crumbs">
+              Вы находитесь здесь:
+              <a href="{% url 'home' %}">Начало</a>
+              <span class="crumbs-span">»</span>
+              <span>Контакты</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sections sections-padding-b-0">
+    <div class="container contacts">
+      <div class="row">
+        <div class="col-md-12 main-content">
+          <div class="row">
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-12 protfolio-filter">
+                  <ul>
+                  </ul>
+                </div>
+              </div>
+              <div class="row portfolio-all portfolio-0">
+                <ul class="isotope" style="position: relative; overflow: hidden; height: 480px;">
+
+                  {% for contactsPeople in pageContacts.contactsPeople.all %}
+                    <li class="col-md-4 term-0 portfolio-item isotope-item"
+                      style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                      <div class="portfolio-one">
+                        <div class="portfolio-content">
+                          <i class="fa fa-address-book"></i>
+                          <div class="portfolio-meta">
+                            <div class="portfolio-name">
+                              <h5>{{ contactsPeople.name }}</h5>
+                            </div>
+                            <div class="portfolio-cat job">
+                              <p>{{ contactsPeople.post }}</p>
+                            </div>
+                            <div class="portfolio-cat phone-email"><i class="fa fa-phone"></i><a
+                                href="tel:{{ contactsPeople.phone }}">{{ contactsPeople.phone }}</a></div>
+                            <div class="portfolio-cat phone-email"><i class="fa fa-envelope"></i><a
+                                href="mailto:{{ contactsPeople.mail1 }}">{{ contactsPeople.mail1 }}</a></div>
+                            {% if contactsPeople.mail2 %}
+                              <div class="portfolio-cat phone-email"><i class="fa fa-envelope"></i><a
+                                  href="mailto:{{ contactsPeople.mail2 }}">{{ contactsPeople.mail2 }}</a></div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 sidebar">
+              <div class="widget">
+                <div class="widget-title section-title-2">
+                  <h6>Адрес офиса :</h6>
+                </div>
+                <div class="contact-information">
+                  <ul>
+                    <li>
+                      <ul style="margin-left:0px; margin-right:0px">
+                        <li>SIA Rosterminals, Maskavas iela 450b, Riga, LV-1063, Latvija.&nbsp;</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- End contact-information -->
+                <div class="widget-title section-title-2">
+                  <h6>Юридический адрес :</h6>
+                </div>
+                <div class="contact-information">
+                  <ul>
+                    <li>SIA RIGEL-Z<br>
+                      A.SAHAROVA 5-113<br>
+                      RIGA, LATVIA, LV-1082<br>
+                      VAT LV40003770044<br>
+                      AS CITADELE BANKA<br>
+                      SWIFT PARXLV22<br>
+                      LV95PARX0019019790002&nbsp;&nbsp;</li>
+                  </ul>
+                </div>
+                <div class="widget-title section-title-2 ">
+                  <h6>Телефоны :</h6>
+                </div>
+                <ul class="business-hours phone-email">
+                  <li><i class="fas fa-phone"></i><a href="tel:+371 25900541">+371 25900541</a></li>
+
+                </ul>
+                <div class="contact-information">
+                  <ul class="phone-email">
+
+                    <li><i class="fas fa-phone"></i><a href="tel:+371 27808215">+371 27808215</a></li>
+                  </ul>
+                </div>
+                <br><br>
+                <div class="widget-title ">
+                  <h6>Факс </h6>
+                </div>
+                <div class="contact-information">
+                  <ul class="phone-email">
+                    <li><i class="fas fa-fax"></i><a href="tel:+371 67253067">+371 67253067</a></li>
+                  </ul>
+                </div>
+                <br><br>
+                <div class="widget-title section-title-2 clearboth ">
+                  <h6>E-mail </h6>
+                </div>
+                <div class="contact-information">
+                  <ul class="phone-email">
+                    <li><i class="fa fa-envelope"></i><a href="mailto:info@rigel-z.lv">info@rigel-z.lv</a></li>
+                  </ul>
+                </div>
+                <br><br>
+              </div>
+            </div>
+          </div><!-- End row -->
+          <div class="clearfix gap"></div>
+          <div class="clearfix gap"></div>
+        </div><!-- End main-content -->
+      </div><!-- End row -->
+    </div><!-- End container -->
+    <div class="contact-iframe">
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11511.801363246479!2d24.230115252237596!3d56.88453919393764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDUzJzA0LjMiTiAyNMKwMTQnMTkuOSJF!5e1!3m2!1slv!2slv!4v1520771625805"
+        width="600" height="450" frameborder="0" style="border:0" allowfullscreen="">
+      </iframe>
+    </div>
+  </div>
+{% endblock %}
